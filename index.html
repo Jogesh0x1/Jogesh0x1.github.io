@@ -4,6 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>JS + CSS Clock</title>
+	<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -20,120 +21,7 @@
 			<span class="digits at9">9</span>
 		</div>
 	</div>
-
-
-	<style>
-		html {
-			background: #018DED url(http://unsplash.it/1500/1000?image=881&blur=50);
-			background-size: cover;
-			font-family: 'helvetica neue';
-			text-align: center;
-			font-size: 10px;
-		}
-		
-		body {
-			font-size: 2rem;
-			display: flex;
-			flex: 1;
-			min-height: 100vh;
-			align-items: center;
-		}
-		
-		.clock {
-			width: 30rem;
-			height: 30rem;
-			border: 20px solid white;
-			border-radius: 50%;
-			margin: 50px auto;
-			position: relative;
-			padding: 2rem;
-			box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.1), inset 0 0 0 3px #EFEFEF, inset 0 0 10px black, 0 0 10px rgba(0, 0, 0, 0.2);
-			transform: rotate(90deg);
-		}
-		
-		.clock-face {
-			position: relative;
-			width: 100%;
-			height: 100%;
-			transform: translateY(-3px);
-			/* account for the height of the clock hands */
-		}
-		
-		.hand {
-			width: 50%;
-			height: 6px;
-			background: black;
-			position: absolute;
-			top: 50%;
-			transform-origin: 100%;
-		}
-		.hand::before{
-			content: '<';
-			position: relative;
-			display: inline-block;
-			right:52%;
-			top: -10px;
-			font-size: 16px;
-			font-weight: bolder;
-		}
-		
-		.digits {
-			position: absolute;
-			/*to counter rotate of .clock*/
-			transform: rotate(270deg);
-			font: bolder condensed 16px cursive;
-			
-		}
-		
-		.at12 {
-			top: 47%;
-			left: -13%;
-		}
-		.at3{
-			top: -13%
-		}
-		
-		.at6 {
-			top: 47%;
-			left: 108%;
-		}
-		
-		.at9 {
-			top: 107%;
-		}
-		
-		.hour-hand {
-			width: 39%;
-			left: 30px;
-		}
-	</style>
-
-	<script>
-		'use strict';
-		const secondHand = document.querySelector(".second-hand");
-		const minuteHand = document.querySelector(".min-hand");
-		const hourHand = document.querySelector(".hour-hand");
-
-		function setDate() {
-			const now = new Date();
-
-			const seconds = now.getSeconds();
-			const secondsDegree = (seconds / 60) * 360;
-			secondHand.style.transform = `rotate(${secondsDegree}deg)`;
-			if (seconds === 0 || !minuteHand.style.transform) { /*do these at start of clock or every minute*/
-				const minutes = now.getMinutes();
-				const minutesDegree = (minutes / 60) * 360;
-				minuteHand.style.transform = `rotate(${minutesDegree}deg)`;
-				if (minutes === 0) {
-					const hour = now.getHours();
-					const hoursDegree = (hour / 12) * 360;
-					hourHand.style.transform = `rotate(${hoursDegree}deg)`;
-				}
-			}
-
-		}
-		setInterval(setDate, 1000);
-	</script>
+        <script src="script.js"></script>
 </body>
 
 </html>
